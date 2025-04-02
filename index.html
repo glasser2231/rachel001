@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אתר זיכרון - רחל גלסר</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- שורת כפתורים בראש הדף -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">דף הבית</a></li>
+            <li><a href="zekronot.html">זיכרונות</a></li>
+            <li><a href="heklotot.html">הקלטות</a></li>
+            <li><a href="tmunot.html">תמונות</a></li>
+            <li><a href="album.html">אלבום תמונות</a></li>
+        </ul>
+    </nav>
+
+    <!-- דף הבית עם תמונה ברקע -->
+    <div class="home-page">
+        <div class="background-image"></div>
+        <div class="welcome-text">
+            <h1>ברוכים הבאים לאתר הזיכרון של רחל גלסר</h1>
+            <p>רחל נולדה בשנת 2005 ונפטרה בשנת 2024</p>
+            <button id="scrollButton">קרא עוד <span>&#8595;</span></button>
+        </div>
+    </div>
+
+    <!-- פסקה נוספת עם מידע -->
+    <div id="extra-info" class="extra-info">
+        <div class="info-container">
+            <h2>לזכרה של רחל</h2>
+            <p>רחל הייתה אישה צעירה מיוחדת שנגעה בחייהם של רבים. היא אהבה לעזור לאחרים, תמיד עם חיוך רחב על פניה וגישה חיובית לחיים. באתר זה אנו מנציחים את זכרה ואת פועלה.</p>
+            <p>רחל אהבה מוסיקה, טבע ובעלי חיים. היא הייתה תלמידה מצטיינת ותמיד שאפה לשנות את העולם לטובה. זכרונה ימשיך לחיות בלבנו.</p>
+            <p>באתר זה תוכלו למצוא זיכרונות אישיים, הקלטות ותמונות שמשקפות את חייה המיוחדים של רחל ואת האנשים שאהבה.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 אתר זיכרון רחל גלסר. כל הזכויות שמורות.</p>
+    </footer>
+
+    <script>
+        // פונקציה לגילול הדף למטה בלחיצה על כפתור "קרא עוד"
+        document.getElementById('scrollButton').addEventListener('click', function() {
+            document.getElementById('extra-info').scrollIntoView({behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html>
