@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תמונות - אתר זיכרון רחל גלסר</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* סגנון למודל הלייטבוקס */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* סגנון לתמונות בכרטיסיות */
+        .photo-card img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- שורת כפתורים בראש הדף -->
+    <nav>
+        <ul>
+            <li><a href="index.html">דף הבית</a></li>
+            <li><a href="zekronot.html">זיכרונות</a></li>
+            <li><a href="heklotot.html">הקלטות</a></li>
+            <li><a href="tmunot.html" class="active">תמונות</a></li>
+            <li><a href="album.html">אלבום תמונות</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+        <div class="page-title">
+            <h1>תמונות של רחל</h1>
+            <p>רגעים מיוחדים מחייה של רחל</p>
+        </div>
+
+        <div class="photos-container">
+            <div class="photo-card">
+                <img src="images/photo1.jpg" alt="רחל בטיול משפחתי" onclick="openLightbox('images/photo1.jpg', 'טיול משפחתי בצפון')">
+                <div class="photo-info">
+                    <div class="photo-title">טיול משפחתי בצפון</div>
+                    <div class="photo-date">קיץ 2023</div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/photo2.jpg" alt="רחל עם חברים" onclick="openLightbox('images/photo2.jpg', 'מסיבת סיום שנה')">
+                <div class="photo-info">
+                    <div class="photo-title">מסיבת סיום שנה</div>
+                    <div class="photo-date">יוני 2023</div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/photo3.jpg" alt="רחל במופע בית ספר" onclick="openLightbox('images/photo3.jpg', 'הופעה בערב כישרונות')">
+                <div class="photo-info">
+                    <div class="photo-title">הופעה בערב כישרונות</div>
+                    <div class="photo-date">מרץ 2023</div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/photo4.jpg" alt="רחל בים" onclick="openLightbox('images/photo4.jpg', 'יום בחוף הים')">
+                <div class="photo-info">
+                    <div class="photo-title">יום בחוף הים</div>
+                    <div class="photo-date">אוגוסט 2023</div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/photo5.jpg" alt="רחל בפיקניק משפחתי" onclick="openLightbox('images/photo5.jpg', 'פיקניק משפחתי')">
+                <div class="photo-info">
+                    <div class="photo-title">פיקניק משפחתי</div>
+                    <div class="photo-date">אפריל 2023</div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/photo6.jpg" alt="רחל בטקס בית ספר" onclick="openLightbox('images/photo6.jpg', 'טקס מצטיינים')">
+                <div class="photo-info">
+                    <div class="photo-title">טקס מצטיינים</div>
+                    <div class="photo-date">מאי 2023</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- לייטבוקס להגדלת תמונות -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content">
+            <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 אתר זיכרון רחל גלסר. כל הזכויות שמורות.</p>
+    </footer>
+
+    <script>
+        // פונקציות לפתיחה וסגירה של הלייטבוקס
+        function openLightbox(imgSrc, title) {
+            document.getElementById('lightbox-image').src = imgSrc;
+            document.getElementById('lightbox-image').alt = title;
+            document.getElementById('lightbox').classList.add('active');
+            // מניעת גלילה בדף כשהלייטבוקס פתוח
+            document.body.style.overflow = 'hidden';
+            // מניעת סגירה בלחיצה על התמונה עצמה
+            event.stopPropagation();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            // חזרה לאפשרות גלילה
+            document.body.style.overflow = 'auto';
+        }
+
+        // סגירת הלייטבוקס בלחיצה על מקש אסקייפ
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
